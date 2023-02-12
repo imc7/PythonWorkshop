@@ -1,0 +1,14 @@
+import cv2
+cont=0
+captura = cv2.VideoCapture(0)
+while (captura.isOpened()):
+  ret, imagen = captura.read()
+  if ret == True:
+    cv2.imshow('video', imagen)
+    cv2.imwrite('images/subcarpeta/_{}.jpg'.format(cont), imagen)
+    cont=cont+1
+    if cv2.waitKey(1) & 0xFF == ord('s'):
+      break
+  else: break
+captura.release()
+cv2.destroyAllWindows()
